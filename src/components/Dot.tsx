@@ -9,12 +9,12 @@ type DotProps = {
 
 const sizeClasses: Record<DotSize, { idle: string; active: string }> = {
   main: {
-    idle: 'size-11 md:size-16',
-    active: 'size-12 md:size-[4.5rem]',
+    idle: 'size-6 md:size-16',
+    active: 'size-7 md:size-[4.5rem]',
   },
   sub: {
-    idle: 'size-8 md:size-10',
-    active: 'size-9 md:size-12',
+    idle: 'size-4 md:size-10',
+    active: 'size-5 md:size-12',
   },
 }
 
@@ -38,7 +38,7 @@ export function Dot({ label, isActive, size = 'main', onClick }: DotProps) {
       {isActive && (
         <span
           aria-hidden
-          className="pointer-events-none absolute -inset-[6px] rounded-full border-[3px] border-[#7dd3fc]"
+          className="pointer-events-none absolute -inset-1 rounded-full border-2 border-[#7dd3fc] md:-inset-[6px] md:border-[3px]"
         />
       )}
     </button>
