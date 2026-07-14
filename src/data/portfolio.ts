@@ -5,6 +5,10 @@ import gridMemorize from '../assets/grid-puzzle/gameplay_memorize.png'
 import gridResult from '../assets/grid-puzzle/gameplay_result.png'
 import llmEmptyState from '../assets/llm-context-builder/empty-state.png'
 import llmProjectLoaded from '../assets/llm-context-builder/project-loaded.png'
+import mainstoreDashboard from '../assets/mainstore/admin-dashboard.png'
+import mainstoreProducts from '../assets/mainstore/admin-products.png'
+import mainstoreCategories from '../assets/mainstore/admin-categories.png'
+import mainstoreUsers from '../assets/mainstore/admin-users.png'
 
 export type SectionEntry = {
   id: string
@@ -133,9 +137,40 @@ export const sections: PortfolioSection[] = [
       },
       {
         id: 'mainstore',
-        title: 'Mainstore',
-        body: 'TypeScript e-commerce application with modern storefront patterns, product management, and a production-oriented architecture.',
+        title: 'MainStore',
+        subtitle: 'Astro · React · Hono · Cloudflare Workers',
+        body: 'Full-stack e-commerce platform with an Astro SSR storefront, React + Ant Design admin dashboard, and a Hono API on Cloudflare Workers. Neon Postgres, Drizzle ORM, Clerk auth with customer/manager/admin roles, catalog CRUD, variants, categories, checkout, and order management. Use the extra dots for admin screenshots.',
         href: 'https://github.com/muhammadsaleh14/mainstore',
+        entries: [
+          {
+            id: 'mainstore-dashboard',
+            title: 'Dashboard',
+            body: 'Admin overview of store activity — the staff home for managing the catalog and operations.',
+            image: mainstoreDashboard,
+            imageAlt: 'MainStore admin dashboard overview',
+          },
+          {
+            id: 'mainstore-products',
+            title: 'Products',
+            body: 'Product catalog management with variants — create, edit, and organize inventory from the admin app.',
+            image: mainstoreProducts,
+            imageAlt: 'MainStore product catalog management',
+          },
+          {
+            id: 'mainstore-categories',
+            title: 'Categories',
+            body: 'Category hierarchy management for structuring the storefront catalog.',
+            image: mainstoreCategories,
+            imageAlt: 'MainStore category hierarchy management',
+          },
+          {
+            id: 'mainstore-users',
+            title: 'Users',
+            body: 'User and role management — assign customer, manager, or admin access via Clerk-synced accounts.',
+            image: mainstoreUsers,
+            imageAlt: 'MainStore user and role management',
+          },
+        ],
       },
     ],
   },
