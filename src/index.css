@@ -24,6 +24,8 @@
 
   body {
     @apply m-0 min-h-svh bg-neutral-950 font-sans text-neutral-400 antialiased;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
   }
 
   #root {

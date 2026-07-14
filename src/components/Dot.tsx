@@ -8,8 +8,14 @@ type DotProps = {
 }
 
 const sizeClasses: Record<DotSize, { idle: string; active: string }> = {
-  main: { idle: 'size-16', active: 'size-[4.5rem]' },
-  sub: { idle: 'size-10', active: 'size-12' },
+  main: {
+    idle: 'size-11 md:size-16',
+    active: 'size-12 md:size-[4.5rem]',
+  },
+  sub: {
+    idle: 'size-8 md:size-10',
+    active: 'size-9 md:size-12',
+  },
 }
 
 export function Dot({ label, isActive, size = 'main', onClick }: DotProps) {

@@ -14,11 +14,11 @@ export function SectionDetail({ section, project }: SectionDetailProps) {
   return (
     <article
       key={detailKey}
-      className="flex min-h-[50svh] w-[min(52vw,56rem)] flex-col justify-center animate-detail-in max-lg:w-[min(62vw,48rem)] max-sm:w-[85vw]"
+      className="flex w-full flex-col justify-center px-1 pb-8 animate-detail-in md:min-h-[50svh] md:w-[min(52vw,56rem)] md:px-0 md:pb-0 lg:w-[min(52vw,56rem)]"
       aria-live="polite"
     >
       {project && (
-        <p className="mb-3 text-xl font-medium tracking-wide text-neutral-600 max-sm:text-lg">
+        <p className="mb-2 text-base font-medium tracking-wide text-neutral-600 md:mb-3 md:text-xl">
           {section.title}
         </p>
       )}
@@ -27,14 +27,14 @@ export function SectionDetail({ section, project }: SectionDetailProps) {
         <img
           src={section.image}
           alt={section.imageAlt ?? ''}
-          className="mb-8 size-56 rounded-full object-cover object-top max-sm:size-44"
+          className="mb-5 size-32 self-center rounded-full object-cover object-top md:mb-8 md:size-56 md:self-auto"
         />
       )}
 
-      <h1 className="mb-6 text-5xl font-medium tracking-wide text-neutral-200 max-sm:text-4xl">
+      <h1 className="mb-4 text-3xl font-medium tracking-wide text-neutral-200 md:mb-6 md:text-5xl">
         {title}
       </h1>
-      <p className="m-0 max-w-3xl text-3xl leading-relaxed text-neutral-500 max-sm:text-2xl">
+      <p className="m-0 max-w-3xl text-lg leading-relaxed text-neutral-500 md:text-3xl">
         {body}
       </p>
 
@@ -43,7 +43,7 @@ export function SectionDetail({ section, project }: SectionDetailProps) {
           href={project.href}
           target="_blank"
           rel="noreferrer"
-          className="mt-10 inline-block border-b border-white/10 text-2xl text-neutral-500 no-underline transition-colors duration-200 hover:border-white/25 hover:text-neutral-300 max-sm:text-xl"
+          className="mt-6 inline-block border-b border-white/10 text-lg text-neutral-500 no-underline transition-colors duration-200 hover:border-white/25 hover:text-neutral-300 md:mt-10 md:text-2xl"
         >
           View project
         </a>

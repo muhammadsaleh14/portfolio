@@ -7,9 +7,13 @@ type ProjectSubNavProps = {
   onSelect: (projectId: string) => void
 }
 
-export function ProjectSubNav({ projects, activeProjectId, onSelect }: ProjectSubNavProps) {
+export function ProjectSubNavDesktop({
+  projects,
+  activeProjectId,
+  onSelect,
+}: ProjectSubNavProps) {
   return (
-    <div className="absolute top-1/2 left-[calc(100%+2rem)] -translate-y-1/2">
+    <div className="absolute top-1/2 left-[calc(100%+2rem)] hidden -translate-y-1/2 md:block">
       <div
         aria-hidden
         className="absolute top-1/2 -left-8 h-px w-8 -translate-y-1/2 bg-white/25"
@@ -33,5 +37,32 @@ export function ProjectSubNav({ projects, activeProjectId, onSelect }: ProjectSu
         ))}
       </nav>
     </div>
+  )
+}
+
+export function ProjectSubNavMobile({
+  projects,
+  activeProjectId,
+  onSelect,
+}: ProjectSubNavProps) {
+  return (
+    <nav
+      className="relative flex w-full max-w-md flex-row items-center justify-between px-2 md:hidden"
+      aria-label="Projects"
+    >
+      <div
+        aria-hidden
+        className="absolute top-1/2 right-4 left-4 h-px -translate-y-1/2 bg-white/25"
+      />
+      {projects.map((project) => (
+        <Dot
+          key={project.id}
+          label={project.title}
+          size="sub"
+          isActive={project.id === activeProjectId}
+          onClick={() => onSelect(project.id)}
+        />
+      ))}
+    </nav>
   )
 }
