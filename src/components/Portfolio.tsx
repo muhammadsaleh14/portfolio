@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { sections } from '../data/portfolio'
 import { DotNav } from './DotNav'
 import { PortfolioLayout } from './PortfolioLayout'
+import { PreloadPortfolioImages, preloadPortfolioImages } from './PreloadPortfolioImages'
 import { SectionDetail } from './SectionDetail'
 
 function isTypingTarget(target: EventTarget | null) {
@@ -40,6 +41,10 @@ export function Portfolio() {
   const handleSelectChild = (childId: string) => {
     setActiveChildId(childId)
   }
+
+  useEffect(() => {
+    preloadPortfolioImages()
+  }, [])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -134,25 +139,28 @@ export function Portfolio() {
   }, [activeIndex, activeEntryId, activeChildId])
 
   return (
-    <PortfolioLayout
-      navigation={
-        <DotNav
-          sections={sections}
-          activeIndex={activeIndex}
-          activeEntryId={activeEntryId}
-          activeChildId={activeChildId}
-          onSelectSection={handleSelectSection}
-          onSelectEntry={handleSelectEntry}
-          onSelectChild={handleSelectChild}
-        />
-      }
-      detail={
-        <SectionDetail
-          section={activeSection}
-          entry={activeEntry}
-          child={activeChild}
-        />
-      }
-    />
+    <>
+      <PreloadPortfolioImages />
+      <PortfolioLayout
+        navigation={
+          <DotNav
+            sections={sections}
+            activeIndex={activeIndex}
+            activeEntryId={activeEntryId}
+            activeChildId={activeChildId}
+            onSelectSection={handleSelectSection}
+            onSelectEntry={handleSelectEntry}
+            onSelectChild={handleSelectChild}
+          />
+        }
+        detail={
+          <SectionDetail
+            section={activeSection}
+            entry={activeEntry}
+            child={activeChild}
+          />
+        }
+      />
+    </>
   )
 }

@@ -191,3 +191,20 @@ export const sections: PortfolioSection[] = [
     ],
   },
 ]
+
+function collectEntryImages(entries: SectionEntry[] = []): string[] {
+  return entries.flatMap((entry) => [
+    ...(entry.image ? [entry.image] : []),
+    ...collectEntryImages(entry.entries),
+  ])
+}
+
+/** All portfolio image URLs — used to preload so detail views open instantly. */
+export const portfolioImages = [
+  ...new Set(
+    sections.flatMap((section) => [
+      ...(section.image ? [section.image] : []),
+      ...collectEntryImages(section.entries),
+    ]),
+  ),
+]
