@@ -1,10 +1,11 @@
 import profilePhoto from '../assets/profile.png'
 
-export type Project = {
+export type SectionEntry = {
   id: string
   title: string
   body: string
   href?: string
+  subtitle?: string
 }
 
 export type PortfolioSection = {
@@ -13,7 +14,7 @@ export type PortfolioSection = {
   body: string
   image?: string
   imageAlt?: string
-  projects?: Project[]
+  entries?: SectionEntry[]
   links?: { label: string; href: string }[]
 }
 
@@ -26,10 +27,29 @@ export const sections: PortfolioSection[] = [
     imageAlt: 'Muhammad Saleh',
   },
   {
+    id: 'experience',
+    title: 'Experience',
+    body: 'Full-stack roles building production ERP, POS, and client applications — from multi-tenant platforms to payments and cloud backends.',
+    entries: [
+      {
+        id: 'devvibe',
+        title: 'Devvibe',
+        subtitle: 'MERN Stack Developer · Jan 2026 – Present',
+        body: 'Building a multi-tenant POS/ERP (sales, inventory, accounting, purchasing) with React, Node.js/Express, PostgreSQL, and Prisma. Tax compliance (FBR/PRA), invoicing, barcode scanning, batch/expiry tracking, and automated journal entries.',
+      },
+      {
+        id: 'freelance',
+        title: 'Freelance',
+        subtitle: 'Full Stack Developer',
+        body: 'Integrated Firebase (Auth, Firestore, Cloud Functions), migrated a mobile app to web with React and Laravel, and shipped Stripe payment flows for secure transaction processing.',
+      },
+    ],
+  },
+  {
     id: 'work',
     title: 'Work',
-    body: 'Production systems across ERP, healthcare, e-commerce, and developer tooling — backend APIs, databases, payments, and full-stack delivery.',
-    projects: [
+    body: 'Production systems across ERP, healthcare, e-commerce, and games — backend APIs, databases, payments, and full-stack delivery.',
+    entries: [
       {
         id: 'pos-erp',
         title: 'Multi-tenant POS / ERP',

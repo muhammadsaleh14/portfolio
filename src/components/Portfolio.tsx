@@ -6,19 +6,15 @@ import { SectionDetail } from './SectionDetail'
 
 export function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
+  const [activeEntryId, setActiveEntryId] = useState<string | null>(null)
 
   const activeSection = sections[activeIndex]
-  const activeProject =
-    activeSection.projects?.find((project) => project.id === activeProjectId) ?? null
+  const activeEntry =
+    activeSection.entries?.find((entry) => entry.id === activeEntryId) ?? null
 
   const handleSelectSection = (index: number) => {
     setActiveIndex(index)
-    setActiveProjectId(null)
-  }
-
-  const handleSelectProject = (projectId: string) => {
-    setActiveProjectId(projectId)
+    setActiveEntryId(null)
   }
 
   return (
@@ -27,12 +23,12 @@ export function Portfolio() {
         <DotNav
           sections={sections}
           activeIndex={activeIndex}
-          activeProjectId={activeProjectId}
+          activeEntryId={activeEntryId}
           onSelectSection={handleSelectSection}
-          onSelectProject={handleSelectProject}
+          onSelectEntry={setActiveEntryId}
         />
       }
-      detail={<SectionDetail section={activeSection} project={activeProject} />}
+      detail={<SectionDetail section={activeSection} entry={activeEntry} />}
     />
   )
 }
