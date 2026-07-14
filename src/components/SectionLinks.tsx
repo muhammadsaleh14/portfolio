@@ -14,8 +14,8 @@ export function SectionLinks({ links }: SectionLinksProps) {
         <li key={link.label}>
           <a
             href={link.href}
-            target="_blank"
-            rel="noreferrer"
+            target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+            rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer'}
             className="border-b border-white/10 text-2xl text-neutral-500 no-underline transition-colors duration-200 hover:border-white/25 hover:text-neutral-300 max-sm:text-xl"
           >
             {link.label}
