@@ -7,8 +7,8 @@ type PortfolioLayoutProps = {
 
 export function PortfolioLayout({ navigation, detail }: PortfolioLayoutProps) {
   return (
-    <main className="grid min-h-svh w-full place-items-center overflow-hidden bg-neutral-950">
-      <div className="flex -translate-x-[12%] items-center gap-20 max-sm:-translate-x-[6%] max-sm:gap-12">
+    <main className="grid min-h-svh w-full place-items-center overflow-hidden bg-neutral-950 px-6">
+      <div className="flex w-full max-w-[1400px] -translate-x-[8%] items-center gap-[min(8vw,6rem)] max-lg:-translate-x-[4%] max-sm:-translate-x-0 max-sm:flex-col max-sm:gap-10">
         {navigation}
         {detail}
       </div>
