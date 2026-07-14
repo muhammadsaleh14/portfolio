@@ -12,6 +12,13 @@ export function SectionDetail({ section }: SectionDetailProps) {
       className="w-[min(560px,78vw)] animate-detail-in max-sm:w-[min(420px,85vw)]"
       aria-live="polite"
     >
+      {section.image && (
+        <img
+          src={section.image}
+          alt={section.imageAlt ?? ''}
+          className="mb-6 size-48 rounded-full object-cover object-top max-sm:size-36"
+        />
+      )}
       <h1 className="mb-5 text-4xl font-medium tracking-wide text-neutral-200 max-sm:text-3xl">
         {section.title}
       </h1>

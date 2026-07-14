@@ -1,7 +1,11 @@
+import profilePhoto from '../assets/profile.png'
+
 export type PortfolioSection = {
   id: string
   title: string
   body: string
+  image?: string
+  imageAlt?: string
   links?: { label: string; href: string }[]
 }
 
@@ -10,6 +14,8 @@ export const sections: PortfolioSection[] = [
     id: 'about',
     title: 'About',
     body: 'Designer-developer building quiet, intentional interfaces. I care about typography, restraint, and the space between things.',
+    image: profilePhoto,
+    imageAlt: 'Portrait photo',
   },
   {
     id: 'work',
