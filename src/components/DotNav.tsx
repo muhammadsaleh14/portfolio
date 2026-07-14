@@ -9,7 +9,7 @@ type DotNavProps = {
 
 export function DotNav({ sections, activeIndex, onSelect }: DotNavProps) {
   return (
-    <nav className="flex flex-col items-center gap-7" aria-label="Portfolio sections">
+    <nav className="flex flex-col items-center gap-10" aria-label="Portfolio sections">
       {sections.map((section, index) => (
         <Dot
           key={section.id}
