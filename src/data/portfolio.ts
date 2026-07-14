@@ -22,7 +22,7 @@ export const sections: PortfolioSection[] = [
   {
     id: 'about',
     title: 'Muhammad Saleh',
-    body: 'Full stack software engineer from Pakistan. I build scalable SaaS platforms, ERP systems, and production web apps — from FastAPI and Django backends to React and Next.js frontends. Currently developing a multi-tenant POS/ERP at Devvibe. BS Software Engineering, NUST.',
+    body: 'Full stack software engineer from Pakistan. I build scalable SaaS platforms, ERP systems, and production web apps — from FastAPI and Django backends to React and Next.js frontends. Previously built a multi-tenant POS/ERP at Devvibe. BS Software Engineering, NUST.',
     image: profilePhoto,
     imageAlt: 'Muhammad Saleh',
   },
@@ -34,7 +34,7 @@ export const sections: PortfolioSection[] = [
       {
         id: 'devvibe',
         title: 'Devvibe',
-        subtitle: 'MERN Stack Developer · Jan 2026 – Present',
+        subtitle: 'MERN Stack Developer · Jan 2026 – Jul 2026',
         body: 'Building a multi-tenant POS/ERP (sales, inventory, accounting, purchasing) with React, Node.js/Express, PostgreSQL, and Prisma. Tax compliance (FBR/PRA), invoicing, barcode scanning, batch/expiry tracking, and automated journal entries.',
       },
       {
