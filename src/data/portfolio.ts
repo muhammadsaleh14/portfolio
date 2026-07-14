@@ -3,6 +3,8 @@ import gridMainMenu from '../assets/grid-puzzle/main_menu.png'
 import gridLevelSelect from '../assets/grid-puzzle/level_select.png'
 import gridMemorize from '../assets/grid-puzzle/gameplay_memorize.png'
 import gridResult from '../assets/grid-puzzle/gameplay_result.png'
+import llmEmptyState from '../assets/llm-context-builder/empty-state.png'
+import llmProjectLoaded from '../assets/llm-context-builder/project-loaded.png'
 
 export type SectionEntry = {
   id: string
@@ -55,7 +57,7 @@ export const sections: PortfolioSection[] = [
   {
     id: 'work',
     title: 'Work',
-    body: 'Production systems across ERP, healthcare, e-commerce, and games — backend APIs, databases, payments, and full-stack delivery.',
+    body: 'Production systems across ERP, healthcare, e-commerce, developer tooling, and games — backend APIs, desktop apps, and full-stack delivery.',
     entries: [
       {
         id: 'pos-erp',
@@ -68,6 +70,29 @@ export const sections: PortfolioSection[] = [
         title: 'Patient Management System',
         body: 'Healthcare platform for patient records, visits, and prescriptions. Next.js and Django backend with Prisma-backed APIs and a structured database schema.',
         href: 'https://github.com/muhammadsaleh14/patientManagement',
+      },
+      {
+        id: 'llm-context-builder',
+        title: 'LLM Context Builder',
+        subtitle: 'Python · PySide6 desktop app',
+        body: 'Desktop app that turns selected project files into a single text file you can paste into an LLM chat. Checkbox file tree, live selection count, name filter, .gitignore support, global ignore patterns, per-project memory, clipboard export, and binary-safe generation. Use the extra dots for screenshots.',
+        href: 'https://github.com/muhammadsaleh14/llm_context_builder',
+        entries: [
+          {
+            id: 'llm-empty',
+            title: 'Empty state',
+            body: 'Open a project directory to get started — then mark files in the tree and generate a concatenated context document.',
+            image: llmEmptyState,
+            imageAlt: 'LLM Context Builder empty state screen',
+          },
+          {
+            id: 'llm-loaded',
+            title: 'Project loaded',
+            body: 'Project loaded with a checkbox tree. Filter by name, respect .gitignore, choose an output path, optionally copy to clipboard, then generate.',
+            image: llmProjectLoaded,
+            imageAlt: 'LLM Context Builder with a project loaded',
+          },
+        ],
       },
       {
         id: 'grid-puzzle',
