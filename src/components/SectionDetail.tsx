@@ -4,12 +4,17 @@ import { SectionLinks } from './SectionLinks'
 type SectionDetailProps = {
   section: PortfolioSection
   entry?: SectionEntry | null
+  child?: SectionEntry | null
 }
 
-export function SectionDetail({ section, entry }: SectionDetailProps) {
-  const title = entry?.title ?? section.title
-  const body = entry?.body ?? section.body
-  const detailKey = entry?.id ?? section.id
+export function SectionDetail({ section, entry, child }: SectionDetailProps) {
+  const active = child ?? entry
+  const title = active?.title ?? section.title
+  const body = active?.body ?? section.body
+  const detailKey = child?.id ?? entry?.id ?? section.id
+  const image = child?.image ?? (!child ? entry?.image : undefined) ?? (!entry && !child ? section.image : undefined)
+  const imageAlt = child?.imageAlt ?? entry?.imageAlt ?? section.imageAlt ?? ''
+  const isScreenshot = Boolean(child?.image)
 
   return (
     <article
@@ -17,17 +22,21 @@ export function SectionDetail({ section, entry }: SectionDetailProps) {
       className="flex w-full flex-col justify-center px-1 animate-detail-in md:min-h-[50svh] md:w-[min(48vw,52rem)] md:shrink md:px-0 md:pb-0"
       aria-live="polite"
     >
-      {entry && (
+      {(entry || child) && (
         <p className="mb-2 text-base font-medium tracking-wide text-neutral-600 md:mb-3 md:text-xl">
-          {section.title}
+          {child ? `${section.title} · ${entry?.title}` : section.title}
         </p>
       )}
 
-      {!entry && section.image && (
+      {image && (
         <img
-          src={section.image}
-          alt={section.imageAlt ?? ''}
-          className="mb-5 size-32 self-center rounded-full object-cover object-top md:mb-8 md:size-56 md:self-auto"
+          src={image}
+          alt={imageAlt}
+          className={
+            isScreenshot
+              ? 'mb-5 max-h-[42svh] w-auto max-w-full self-center rounded-2xl object-contain md:mb-6 md:max-h-[55svh] md:self-start'
+              : 'mb-5 size-32 self-center rounded-full object-cover object-top md:mb-8 md:size-56 md:self-auto'
+          }
         />
       )}
 
@@ -35,9 +44,9 @@ export function SectionDetail({ section, entry }: SectionDetailProps) {
         {title}
       </h1>
 
-      {entry?.subtitle && (
+      {active?.subtitle && (
         <p className="mb-4 text-base tracking-wide text-neutral-500 md:mb-5 md:text-xl">
-          {entry.subtitle}
+          {active.subtitle}
         </p>
       )}
 
@@ -45,7 +54,7 @@ export function SectionDetail({ section, entry }: SectionDetailProps) {
         {body}
       </p>
 
-      {entry?.href && (
+      {entry?.href && !child && (
         <a
           href={entry.href}
           target="_blank"
@@ -56,7 +65,7 @@ export function SectionDetail({ section, entry }: SectionDetailProps) {
         </a>
       )}
 
-      {!entry && section.links && <SectionLinks links={section.links} />}
+      {!entry && !child && section.links && <SectionLinks links={section.links} />}
     </article>
   )
 }

@@ -1,4 +1,8 @@
 import profilePhoto from '../assets/profile.png'
+import gridMainMenu from '../assets/grid-puzzle/main_menu.png'
+import gridLevelSelect from '../assets/grid-puzzle/level_select.png'
+import gridMemorize from '../assets/grid-puzzle/gameplay_memorize.png'
+import gridResult from '../assets/grid-puzzle/gameplay_result.png'
 
 export type SectionEntry = {
   id: string
@@ -6,6 +10,9 @@ export type SectionEntry = {
   body: string
   href?: string
   subtitle?: string
+  image?: string
+  imageAlt?: string
+  entries?: SectionEntry[]
 }
 
 export type PortfolioSection = {
@@ -64,9 +71,40 @@ export const sections: PortfolioSection[] = [
       },
       {
         id: 'grid-puzzle',
-        title: 'Grid Puzzle Game',
-        body: 'Memory-based puzzle game built in Godot with procedural grid generation, game state logic, and randomized patterns.',
+        title: 'Grid Puzzle',
+        subtitle: 'Godot 4.6 · Mobile memory puzzle',
+        body: 'A mobile-first memory puzzle: memorize a scattered tile pattern, then tap it back before you forget. 24-level campaign with rising difficulty (3×3 → 7×7), progress save, Free Play unlock, clear correct/wrong/missed feedback, and AdMob-ready Android/iOS builds. Use the extra dots for screenshots.',
         href: 'https://github.com/muhammadsaleh14/GridPuzzleGameGodot',
+        entries: [
+          {
+            id: 'grid-menu',
+            title: 'Main menu',
+            body: 'Start the campaign, or unlock Free Play and Settings after finishing all 24 levels.',
+            image: gridMainMenu,
+            imageAlt: 'Grid Puzzle main menu screen',
+          },
+          {
+            id: 'grid-levels',
+            title: 'Level select',
+            body: 'Linear unlock progression: cleared levels show in green, the current challenge is highlighted, and locked levels stay dimmed.',
+            image: gridLevelSelect,
+            imageAlt: 'Grid Puzzle level select screen',
+          },
+          {
+            id: 'grid-memorize',
+            title: 'Memorize',
+            body: 'Watch the highlighted tiles, then recreate the pattern when the countdown ends.',
+            image: gridMemorize,
+            imageAlt: 'Grid Puzzle memorize phase gameplay',
+          },
+          {
+            id: 'grid-result',
+            title: 'Results',
+            body: 'After submit: green = correct, red = wrong, blue = missed. Retry, replay the same pattern, or jump back to the level list.',
+            image: gridResult,
+            imageAlt: 'Grid Puzzle result feedback screen',
+          },
+        ],
       },
       {
         id: 'mainstore',

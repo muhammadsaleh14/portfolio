@@ -6,16 +6,20 @@ type DotNavProps = {
   sections: PortfolioSection[]
   activeIndex: number
   activeEntryId: string | null
+  activeChildId: string | null
   onSelectSection: (index: number) => void
   onSelectEntry: (entryId: string) => void
+  onSelectChild: (childId: string) => void
 }
 
 export function DotNav({
   sections,
   activeIndex,
   activeEntryId,
+  activeChildId,
   onSelectSection,
   onSelectEntry,
+  onSelectChild,
 }: DotNavProps) {
   const activeSection = sections[activeIndex]
   const showEntries = Boolean(activeSection.entries?.length)
@@ -44,7 +48,9 @@ export function DotNav({
         <EntrySubNavMobile
           entries={activeSection.entries!}
           activeEntryId={activeEntryId}
+          activeChildId={activeChildId}
           onSelect={onSelectEntry}
+          onSelectChild={onSelectChild}
         />
       )}
 
@@ -94,7 +100,9 @@ export function DotNav({
                   <EntrySubNavDesktop
                     entries={section.entries!}
                     activeEntryId={activeEntryId}
+                    activeChildId={activeChildId}
                     onSelect={onSelectEntry}
+                    onSelectChild={onSelectChild}
                   />
                 ) : null}
               </div>
