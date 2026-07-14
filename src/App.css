@@ -1,0 +1,131 @@
+.portfolio {
+  --dot-width: 3px;
+  --dot-height: 14px;
+  --dot-gap: 28px;
+  --panel-gap: 48px;
+  --text: rgba(0, 0, 0, 0.42);
+  --text-strong: rgba(0, 0, 0, 0.62);
+
+  width: 100%;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  overflow: hidden;
+}
+
+.portfolio__layout {
+  display: flex;
+  align-items: center;
+  gap: var(--panel-gap);
+  transform: translateX(-12%);
+}
+
+.dot-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--dot-gap);
+  padding: 0;
+  margin: 0;
+}
+
+.dot-nav__dot {
+  width: var(--dot-width);
+  height: var(--dot-height);
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.07),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    height 0.2s ease;
+}
+
+.dot-nav__dot:hover {
+  transform: scaleY(1.15);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.14),
+    0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.dot-nav__dot--active {
+  height: calc(var(--dot-height) * 1.35);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.18),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.dot-nav__dot:focus-visible {
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  outline-offset: 6px;
+}
+
+.detail {
+  width: min(360px, 72vw);
+  animation: detail-in 0.28s ease;
+}
+
+.detail__title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-strong);
+}
+
+.detail__body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.detail__links {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.detail__links a {
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.detail__links a:hover {
+  color: var(--text-strong);
+  border-color: rgba(0, 0, 0, 0.28);
+}
+
+@keyframes detail-in {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio__layout {
+    transform: translateX(-6%);
+    gap: 32px;
+  }
+
+  .detail {
+    width: min(280px, 58vw);
+  }
+}
