@@ -21,7 +21,7 @@ export function DotNav({
   const showEntries = Boolean(activeSection.entries?.length)
 
   return (
-    <div className="flex w-full shrink-0 flex-col items-center gap-5 md:w-auto md:items-stretch md:gap-0">
+    <div className="flex w-full shrink-0 flex-col-reverse items-center gap-5 md:w-auto md:flex-col md:items-stretch md:gap-0">
       <nav
         className="relative flex w-full max-w-md flex-row items-center justify-between px-2 py-2 md:hidden"
         aria-label="Portfolio sections"

@@ -14,7 +14,7 @@ export function SectionDetail({ section, entry }: SectionDetailProps) {
   return (
     <article
       key={detailKey}
-      className="flex w-full flex-col justify-center px-1 pb-8 animate-detail-in md:min-h-[50svh] md:w-[min(48vw,52rem)] md:shrink md:px-0 md:pb-0"
+      className="flex w-full flex-col justify-center px-1 animate-detail-in md:min-h-[50svh] md:w-[min(48vw,52rem)] md:shrink md:px-0 md:pb-0"
       aria-live="polite"
     >
       {entry && (

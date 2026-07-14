@@ -7,10 +7,14 @@ type PortfolioLayoutProps = {
 
 export function PortfolioLayout({ navigation, detail }: PortfolioLayoutProps) {
   return (
-    <main className="min-h-svh w-full overflow-x-hidden bg-neutral-950 px-4 py-6 md:grid md:place-items-center md:overflow-hidden md:px-8 md:py-0">
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center gap-8 md:flex-row md:items-center md:gap-12 lg:gap-16">
-        {navigation}
-        {detail}
+    <main className="flex min-h-svh w-full flex-col overflow-x-hidden bg-neutral-950 px-4 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] md:grid md:place-items-center md:overflow-hidden md:px-8 md:py-0">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col md:flex-none md:flex-row md:items-center md:gap-12 lg:gap-16">
+        <div className="order-2 mt-auto w-full shrink-0 pt-6 md:order-1 md:mt-0 md:w-auto md:pt-0">
+          {navigation}
+        </div>
+        <div className="order-1 flex min-h-0 w-full flex-1 flex-col justify-center md:order-2 md:w-auto md:flex-none">
+          {detail}
+        </div>
       </div>
     </main>
   )
