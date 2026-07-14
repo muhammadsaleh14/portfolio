@@ -1,27 +1,36 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --animate-detail-in: detail-in 0.28s ease;
+
+  @keyframes detail-in {
+    from {
+      opacity: 0;
+      transform: translateX(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
-html,
-body,
-#root {
-  height: 100%;
-}
+@layer base {
+  html {
+    color-scheme: dark;
+  }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-  background: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  body {
+    @apply m-0 min-h-svh bg-neutral-950 font-sans text-neutral-400 antialiased;
+  }
 
-#root {
-  width: 100%;
-}
+  #root {
+    @apply min-h-svh w-full;
+  }
 
-button {
-  font: inherit;
+  button {
+    font: inherit;
+  }
 }
