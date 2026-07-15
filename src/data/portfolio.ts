@@ -35,7 +35,7 @@ export const sections: PortfolioSection[] = [
   {
     id: 'about',
     title: 'Muhammad Saleh',
-    body: 'Full stack software engineer from Pakistan. I build scalable SaaS platforms, ERP systems, and production web apps — from FastAPI and Django backends to React and Next.js frontends. Previously built a multi-tenant POS/ERP at Devvibe. BS Software Engineering, NUST.',
+    body: 'Full stack software engineer from Pakistan. I build scalable SaaS platforms, ERP systems, and production web apps — from FastAPI and Django backends to React and Next.js frontends. Previously worked on a multi-tenant POS/ERP at Devvibe. BS Software Engineering, NUST.',
     image: profilePhoto,
     imageAlt: 'Muhammad Saleh',
   },
@@ -48,7 +48,7 @@ export const sections: PortfolioSection[] = [
         id: 'devvibe',
         title: 'Devvibe',
         subtitle: 'MERN Stack Developer · Jan 2026 – Jul 2026',
-        body: 'Building a multi-tenant POS/ERP (sales, inventory, accounting, purchasing) with React, Node.js/Express, PostgreSQL, and Prisma. Tax compliance (FBR/PRA), invoicing, barcode scanning, batch/expiry tracking, and automated journal entries.',
+        body: 'Worked on a multi-tenant POS/ERP (sales, inventory, accounting, purchasing) with React, Node.js/Express, PostgreSQL, and Prisma. Contributed to tax compliance (FBR/PRA), invoicing, barcode scanning, batch/expiry tracking, and automated journal entries.',
       },
       {
         id: 'freelance',
@@ -61,12 +61,19 @@ export const sections: PortfolioSection[] = [
   {
     id: 'work',
     title: 'Work',
-    body: 'Production systems across ERP, healthcare, e-commerce, developer tooling, and games — backend APIs, desktop apps, and full-stack delivery.',
+    body: 'Production systems across ERP, healthcare, e-commerce, and developer tooling — APIs, desktop apps, and full-stack delivery.',
     entries: [
+      {
+        id: 'portfolio-site',
+        title: 'Portfolio',
+        subtitle: 'React · Vite · Tailwind · Cloudflare Workers',
+        body: 'This site — a no-scroll portfolio with a dot-navigation UI, nested project screenshots, keyboard controls, and responsive mobile layout. Deployed as a static Worker on Cloudflare.',
+        href: 'https://portfolio.salehmuhammadjahanzeb.workers.dev',
+      },
       {
         id: 'pos-erp',
         title: 'Multi-tenant POS / ERP',
-        body: 'Sales, inventory, accounting, and purchasing for multi-tenant businesses. React frontend with Node.js/Express, PostgreSQL, and Prisma. Tax compliance, invoicing, barcode scanning, batch tracking, and automated journal entries.',
+        body: 'Contributed to a multi-tenant POS/ERP for sales, inventory, accounting, and purchasing. Worked across the React frontend and Node.js/Express backend with PostgreSQL and Prisma — including tax compliance, invoicing, barcode scanning, batch tracking, and automated journal entries.',
         href: 'https://github.com/muhammadsaleh14',
       },
       {
@@ -79,7 +86,7 @@ export const sections: PortfolioSection[] = [
         id: 'llm-context-builder',
         title: 'LLM Context Builder',
         subtitle: 'Python · PySide6 desktop app',
-        body: 'Desktop app that turns selected project files into a single text file you can paste into an LLM chat. Checkbox file tree, live selection count, name filter, .gitignore support, global ignore patterns, per-project memory, clipboard export, and binary-safe generation. Use the extra dots for screenshots.',
+        body: 'Desktop app that turns selected project files into a single text file you can paste into an LLM chat. Checkbox file tree, live selection count, name filter, .gitignore support, global ignore patterns, per-project memory, clipboard export, and binary-safe generation.',
         href: 'https://github.com/muhammadsaleh14/llm_context_builder',
         entries: [
           {
@@ -99,47 +106,10 @@ export const sections: PortfolioSection[] = [
         ],
       },
       {
-        id: 'grid-puzzle',
-        title: 'Grid Puzzle',
-        subtitle: 'Godot 4.6 · Mobile memory puzzle',
-        body: 'A mobile-first memory puzzle: memorize a scattered tile pattern, then tap it back before you forget. 24-level campaign with rising difficulty (3×3 → 7×7), progress save, Free Play unlock, clear correct/wrong/missed feedback, and AdMob-ready Android/iOS builds. Use the extra dots for screenshots.',
-        href: 'https://github.com/muhammadsaleh14/GridPuzzleGameGodot',
-        entries: [
-          {
-            id: 'grid-menu',
-            title: 'Main menu',
-            body: 'Start the campaign, or unlock Free Play and Settings after finishing all 24 levels.',
-            image: gridMainMenu,
-            imageAlt: 'Grid Puzzle main menu screen',
-          },
-          {
-            id: 'grid-levels',
-            title: 'Level select',
-            body: 'Linear unlock progression: cleared levels show in green, the current challenge is highlighted, and locked levels stay dimmed.',
-            image: gridLevelSelect,
-            imageAlt: 'Grid Puzzle level select screen',
-          },
-          {
-            id: 'grid-memorize',
-            title: 'Memorize',
-            body: 'Watch the highlighted tiles, then recreate the pattern when the countdown ends.',
-            image: gridMemorize,
-            imageAlt: 'Grid Puzzle memorize phase gameplay',
-          },
-          {
-            id: 'grid-result',
-            title: 'Results',
-            body: 'After submit: green = correct, red = wrong, blue = missed. Retry, replay the same pattern, or jump back to the level list.',
-            image: gridResult,
-            imageAlt: 'Grid Puzzle result feedback screen',
-          },
-        ],
-      },
-      {
         id: 'mainstore',
         title: 'MainStore',
         subtitle: 'Astro · React · Hono · Cloudflare Workers',
-        body: 'Full-stack e-commerce platform with an Astro SSR storefront, React + Ant Design admin dashboard, and a Hono API on Cloudflare Workers. Neon Postgres, Drizzle ORM, Clerk auth with customer/manager/admin roles, catalog CRUD, variants, categories, checkout, and order management. Use the extra dots for admin screenshots.',
+        body: 'Full-stack e-commerce platform with an Astro SSR storefront, React + Ant Design admin dashboard, and a Hono API on Cloudflare Workers. Neon Postgres, Drizzle ORM, Clerk auth with customer/manager/admin roles, catalog CRUD, variants, categories, checkout, and order management.',
         href: 'https://github.com/muhammadsaleh14/mainstore',
         entries: [
           {
@@ -169,6 +139,60 @@ export const sections: PortfolioSection[] = [
             body: 'User and role management — assign customer, manager, or admin access via Clerk-synced accounts.',
             image: mainstoreUsers,
             imageAlt: 'MainStore user and role management',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'games',
+    title: 'Games',
+    body: 'Games and interactive projects — from mobile Godot titles to experiments. Open a game below, or visit this portfolio and the game repos.',
+    links: [
+      {
+        label: 'This website',
+        href: 'https://portfolio.salehmuhammadjahanzeb.workers.dev',
+      },
+      {
+        label: 'Grid Puzzle',
+        href: 'https://github.com/muhammadsaleh14/GridPuzzleGameGodot',
+      },
+    ],
+    entries: [
+      {
+        id: 'grid-puzzle',
+        title: 'Grid Puzzle',
+        subtitle: 'Godot 4.6 · Mobile memory puzzle',
+        body: 'A mobile-first memory puzzle: memorize a scattered tile pattern, then tap it back before you forget. 24-level campaign with rising difficulty (3×3 → 7×7), progress save, Free Play unlock, clear correct/wrong/missed feedback, and AdMob-ready Android/iOS builds.',
+        href: 'https://github.com/muhammadsaleh14/GridPuzzleGameGodot',
+        entries: [
+          {
+            id: 'grid-menu',
+            title: 'Main menu',
+            body: 'Start the campaign, or unlock Free Play and Settings after finishing all 24 levels.',
+            image: gridMainMenu,
+            imageAlt: 'Grid Puzzle main menu screen',
+          },
+          {
+            id: 'grid-levels',
+            title: 'Level select',
+            body: 'Linear unlock progression: cleared levels show in green, the current challenge is highlighted, and locked levels stay dimmed.',
+            image: gridLevelSelect,
+            imageAlt: 'Grid Puzzle level select screen',
+          },
+          {
+            id: 'grid-memorize',
+            title: 'Memorize',
+            body: 'Watch the highlighted tiles, then recreate the pattern when the countdown ends.',
+            image: gridMemorize,
+            imageAlt: 'Grid Puzzle memorize phase gameplay',
+          },
+          {
+            id: 'grid-result',
+            title: 'Results',
+            body: 'After submit: green = correct, red = wrong, blue = missed. Retry, replay the same pattern, or jump back to the level list.',
+            image: gridResult,
+            imageAlt: 'Grid Puzzle result feedback screen',
           },
         ],
       },
