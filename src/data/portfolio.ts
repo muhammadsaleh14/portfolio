@@ -147,15 +147,15 @@ export const sections: PortfolioSection[] = [
   {
     id: 'games',
     title: 'Games',
-    body: 'Games and interactive projects — from mobile Godot titles to experiments. Open a game below, or visit this portfolio and the game repos.',
+    body: 'Games and interactive projects — play them on the Game Collection site. Grid Puzzle is live now; more titles will follow.',
     links: [
       {
-        label: 'This website',
-        href: 'https://portfolio.salehmuhammadjahanzeb.workers.dev',
+        label: 'Game Collection',
+        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/',
       },
       {
-        label: 'Grid Puzzle',
-        href: 'https://github.com/muhammadsaleh14/GridPuzzleGameGodot',
+        label: 'Play Grid Puzzle',
+        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/grid-puzzle',
       },
     ],
     entries: [
@@ -164,7 +164,7 @@ export const sections: PortfolioSection[] = [
         title: 'Grid Puzzle',
         subtitle: 'Godot 4.6 · Mobile memory puzzle',
         body: 'A mobile-first memory puzzle: memorize a scattered tile pattern, then tap it back before you forget. 24-level campaign with rising difficulty (3×3 → 7×7), progress save, Free Play unlock, clear correct/wrong/missed feedback, and AdMob-ready Android/iOS builds.',
-        href: 'https://github.com/muhammadsaleh14/GridPuzzleGameGodot',
+        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/grid-puzzle',
         entries: [
           {
             id: 'grid-menu',

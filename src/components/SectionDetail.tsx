@@ -61,7 +61,7 @@ export function SectionDetail({ section, entry, child }: SectionDetailProps) {
           rel="noreferrer"
           className="mt-6 inline-block border-b border-white/10 text-lg text-neutral-500 no-underline transition-colors duration-200 hover:border-white/25 hover:text-neutral-300 md:mt-10 md:text-2xl"
         >
-          {section.id === 'games' ? 'View game' : 'View project'}
+          {section.id === 'games' ? 'Play game' : 'View project'}
         </a>
       )}
 
