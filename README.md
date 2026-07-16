@@ -1,32 +1,216 @@
-# React + TypeScript + Vite
+# No-Scroll Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A single-viewport personal portfolio — no page scrolling. Navigate by **dot rail**, nested project entries, and keyboard arrows. Built with React, Vite, and Tailwind CSS; deployed as a static site on Cloudflare Workers.
 
-Currently, two official plugins are available:
+**Live:** [portfolio.salehmuhammadjahanzeb.workers.dev](https://portfolio.salehmuhammadjahanzeb.workers.dev)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Concept
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Traditional portfolios stack long scrollable sections. This site keeps everything in one composition:
 
-## Expanding the Oxlint configuration
+- **Sections** (About, Experience, Work, Games, Skills, Contact) sit on a vertical/horizontal dot navigation.
+- **Entries** drill into jobs, projects, or games within a section.
+- **Children** open nested screenshots (e.g. Grid Puzzle levels, MainStore admin views).
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+The detail panel updates in place with a short enter animation. Images are preloaded so nested views feel instant.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+---
+
+## Stack
+
+| Layer | Choice |
+|-------|--------|
+| UI | React 19 + TypeScript |
+| Build | Vite 8 |
+| Styles | Tailwind CSS 4 (`@tailwindcss/vite`) |
+| Lint | Oxlint |
+| Hosting | Cloudflare Workers (static assets / SPA) |
+| Deploy | Wrangler |
+
+---
+
+## Features
+
+- **No-scroll layout** — fixed viewport; content swaps instead of scrolling the page
+- **Dot navigation** — desktop rail + mobile bottom dots with entry/child sub-nav
+- **Nested project screenshots** — Work and Games entries can open child image screens
+- **Keyboard controls** — Arrow keys move between sections → entries → children
+- **Image preloading** — all portfolio images warm on load via `portfolioImages`
+- **Responsive** — portrait-friendly mobile layout; desktop side-by-side nav + detail
+- **SPA deploy** — `wrangler.jsonc` serves `dist` with SPA `not_found_handling`
+
+---
+
+## Getting started
+
+### Requirements
+
+- Node.js 20+ (recommended)
+- npm
+
+### Install & run
+
+```bash
+npm install
+npm run dev
+```
+
+Open the local Vite URL (usually `http://localhost:5173`).
+
+### Scripts
+
+| Command | What it does |
+|---------|----------------|
+| `npm run dev` | Vite dev server with HMR |
+| `npm run build` | Typecheck (`tsc -b`) + production bundle to `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run Oxlint |
+| `npm run deploy` | Build + deploy to Cloudflare Workers |
+| `npm run cf:preview` | Build + run via `wrangler dev` |
+
+---
+
+## Project structure
+
+```
+src/
+├── App.tsx                 # Renders <Portfolio />
+├── main.tsx                # React entry
+├── index.css               # Tailwind + global styles / motion
+├── data/
+│   └── portfolio.ts        # All content: sections, entries, images, links
+├── assets/                 # Profile photo, project screenshots
+│   ├── grid-puzzle/
+│   ├── number-path/
+│   ├── llm-context-builder/
+│   └── mainstore/
+└── components/
+    ├── Portfolio.tsx           # State + keyboard navigation
+    ├── PortfolioLayout.tsx     # Shell: nav + detail
+    ├── DotNav.tsx              # Section dots (desktop + mobile)
+    ├── Dot.tsx                 # Single nav dot
+    ├── EntrySubNav.tsx         # Entry / child sub-navigation
+    ├── SectionDetail.tsx       # Title, body, image, project/game link
+    ├── SectionLinks.tsx        # Section-level link list (Contact, Games)
+    └── PreloadPortfolioImages.tsx
+```
+
+Content lives almost entirely in **`src/data/portfolio.ts`**. UI components stay generic and read from that data.
+
+---
+
+## Content model
+
+Defined in `src/data/portfolio.ts`:
+
+```ts
+PortfolioSection {
+  id, title, body
+  image?, imageAlt?
+  entries?: SectionEntry[]
+  links?: { label, href }[]
+}
+
+SectionEntry {
+  id, title, body
+  subtitle?, href?
+  image?, imageAlt?
+  entries?: SectionEntry[]   // nested children (screenshots, etc.)
 }
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Sections today
+
+| ID | Purpose |
+|----|---------|
+| `about` | Name, bio, profile photo |
+| `experience` | Roles (Devvibe, Freelance) |
+| `work` | Projects (Portfolio, POS/ERP, Patient Management, LLM Context Builder, MainStore) |
+| `games` | Grid Puzzle, NumberPath + Game Collection links |
+| `skills` | Tech list |
+| `contact` | Email, GitHub, LinkedIn, resume |
+
+`portfolioImages` is derived automatically from sections/entries so preload stays in sync when you add screenshots.
+
+---
+
+## Adding a project or game
+
+1. Put screenshots under `src/assets/<project-slug>/`.
+2. Import the images at the top of `src/data/portfolio.ts`.
+3. Add a `SectionEntry` under `work` or `games` (optional nested `entries` for screenshot screens).
+4. Optionally add a section-level `links` item (e.g. “Play …”).
+
+Example shape (Games):
+
+```ts
+{
+  id: 'number-path',
+  title: 'NumberPath',
+  subtitle: 'Godot 4.6 · Mobile path puzzle',
+  body: '…',
+  href: 'https://game-collection…/play/number-path',
+  entries: [
+    {
+      id: 'number-path-menu',
+      title: 'Main menu',
+      body: '…',
+      image: numberPathMainMenu,
+      imageAlt: 'NumberPath main menu screen',
+    },
+  ],
+}
+```
+
+No component changes are required for a normal content update.
+
+---
+
+## Keyboard navigation
+
+| Key | Behavior |
+|-----|----------|
+| ↑ / ← | Previous sibling (child → entry → section) |
+| ↓ | Next sibling at the current depth |
+| → | Enter first entry/child, or advance when none |
+
+Typing targets (`input`, `textarea`, `select`, `contenteditable`) are ignored so forms are not hijacked.
+
+---
+
+## Deploy (Cloudflare)
+
+Config: `wrangler.jsonc`
+
+- Worker name: `portfolio`
+- Assets directory: `./dist`
+- SPA fallback enabled for client-side routing
+
+```bash
+npm run deploy
+```
+
+For a local Workers preview of the production build:
+
+```bash
+npm run cf:preview
+```
+
+Ensure you are logged into Wrangler (`npx wrangler login`) before the first deploy.
+
+---
+
+## Design notes
+
+- Dark neutral UI with muted body copy; active dots and detail title carry hierarchy
+- Detail swaps use `animate-detail-in` (see `index.css`)
+- Screenshots use contained max-height; profile uses a circular crop
+- Games entries label the CTA **Play game**; Work entries use **View project**
+
+---
+
+## License
+
+Private portfolio project. Contact the author for reuse questions.
