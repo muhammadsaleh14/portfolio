@@ -3,6 +3,10 @@ import gridMainMenu from '../assets/grid-puzzle/main_menu.png'
 import gridLevelSelect from '../assets/grid-puzzle/level_select.png'
 import gridMemorize from '../assets/grid-puzzle/gameplay_memorize.png'
 import gridResult from '../assets/grid-puzzle/gameplay_result.png'
+import numberPathMainMenu from '../assets/number-path/main-menu.png'
+import numberPathLevels from '../assets/number-path/levels.png'
+import numberPathLevel1 from '../assets/number-path/level-1.png'
+import numberPathLevel11 from '../assets/number-path/level-11.png'
 import llmEmptyState from '../assets/llm-context-builder/empty-state.jpg'
 import llmProjectLoaded from '../assets/llm-context-builder/project-loaded.jpg'
 import mainstoreDashboard from '../assets/mainstore/admin-dashboard.png'
@@ -147,7 +151,7 @@ export const sections: PortfolioSection[] = [
   {
     id: 'games',
     title: 'Games',
-    body: 'Games and interactive projects — play them on the Game Collection site. Grid Puzzle is live now; more titles will follow.',
+    body: 'Games and interactive projects — play them on the Game Collection site. Grid Puzzle and NumberPath are live now.',
     links: [
       {
         label: 'Game Collection',
@@ -156,6 +160,10 @@ export const sections: PortfolioSection[] = [
       {
         label: 'Play Grid Puzzle',
         href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/grid-puzzle',
+      },
+      {
+        label: 'Play NumberPath',
+        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/number-path',
       },
     ],
     entries: [
@@ -193,6 +201,43 @@ export const sections: PortfolioSection[] = [
             body: 'After submit: green = correct, red = wrong, blue = missed. Retry, replay the same pattern, or jump back to the level list.',
             image: gridResult,
             imageAlt: 'Grid Puzzle result feedback screen',
+          },
+        ],
+      },
+      {
+        id: 'number-path',
+        title: 'NumberPath',
+        subtitle: 'Godot 4.6 · Mobile path puzzle',
+        body: 'Trace a glowing trail and touch numbered dots in order — without crossing your own path. 16 handcrafted levels with shifting rules: blocked gates, invisible trails, chasing enemies, orbiting targets, and more. Dynamic joystick, clear fail feedback, and a neon night-path look.',
+        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/number-path',
+        entries: [
+          {
+            id: 'number-path-menu',
+            title: 'Main menu',
+            body: 'Start the campaign from the neon menu — trace the path, follow the numbers.',
+            image: numberPathMainMenu,
+            imageAlt: 'NumberPath main menu screen',
+          },
+          {
+            id: 'number-path-levels',
+            title: 'Level select',
+            body: 'Sixteen stages with escalating mechanics — from connect-the-dots tutorials to orbiting and blinking targets.',
+            image: numberPathLevels,
+            imageAlt: 'NumberPath level select screen',
+          },
+          {
+            id: 'number-path-early',
+            title: 'Early gameplay',
+            body: 'Move with the on-screen joystick, collect dots in order, and avoid the purple trail you leave behind.',
+            image: numberPathLevel1,
+            imageAlt: 'NumberPath Level 1 — Connect the Dots',
+          },
+          {
+            id: 'number-path-motion',
+            title: 'Motion levels',
+            body: 'Later stages add motion twists — swinging pendulums, orbits, fleeing dots, and blink-on-collect timing.',
+            image: numberPathLevel11,
+            imageAlt: 'NumberPath Level 11 — Pendulum',
           },
         ],
       },
