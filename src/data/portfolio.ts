@@ -163,7 +163,7 @@ export const sections: PortfolioSection[] = [
       },
       {
         label: 'Play NumberPath',
-        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/number-path',
+        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/numberpath',
       },
     ],
     entries: [
@@ -209,7 +209,7 @@ export const sections: PortfolioSection[] = [
         title: 'NumberPath',
         subtitle: 'Godot 4.6 · Mobile path puzzle',
         body: 'Trace a glowing trail and touch numbered dots in order — without crossing your own path. 16 handcrafted levels with shifting rules: blocked gates, invisible trails, chasing enemies, orbiting targets, and more. Dynamic joystick, clear fail feedback, and a neon night-path look.',
-        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/number-path',
+        href: 'https://game-collection.salehmuhammadjahanzeb.workers.dev/play/numberpath',
         entries: [
           {
             id: 'number-path-menu',

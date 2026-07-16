@@ -151,7 +151,7 @@ Example shape (Games):
   title: 'NumberPath',
   subtitle: 'Godot 4.6 · Mobile path puzzle',
   body: '…',
-  href: 'https://game-collection…/play/number-path',
+  href: 'https://game-collection…/play/numberpath',
   entries: [
     {
       id: 'number-path-menu',
