@@ -6,11 +6,15 @@ export function NavHint() {
         className="mb-3 text-center text-[0.7rem] leading-relaxed tracking-[0.12em] text-neutral-600 uppercase md:hidden"
         role="note"
       >
-        Swipe <span className="text-neutral-500">← →</span> between dots
+        <span className="text-neutral-500">← →</span> between dots
         <span className="mx-2 text-neutral-700" aria-hidden>
           ·
         </span>
-        <span className="text-neutral-500">↑ ↓</span> for subdots
+        <span className="text-neutral-500">↓</span> into subdots
+        <span className="mx-2 text-neutral-700" aria-hidden>
+          ·
+        </span>
+        <span className="text-neutral-500">↑</span> back
       </p>
 
       <p

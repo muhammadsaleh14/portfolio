@@ -188,8 +188,8 @@ On viewports below `md` (767px):
 |---------|----------|
 | Swipe left | Next dot at the current level |
 | Swipe right | Previous dot at the current level |
-| Swipe up | Enter subdots (section → entries → screenshots) |
-| Swipe down | Leave subdots (screenshots → entries → section) |
+| Swipe up | Out of subdots (screenshots → entries → section) |
+| Swipe down | Into subdots (section → entries → screenshots) |
 
 ---
 

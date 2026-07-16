@@ -135,8 +135,27 @@ export function Portfolio() {
 
       event.preventDefault()
 
-      // Desktop layout: columns are horizontal, lists are vertical.
-      // Mobile: swipe handles orientation; keep arrows matching desktop columns.
+      // Mobile matches swipe: ←→ siblings, ↓ into subdots, ↑ out.
+      // Desktop matches the rail: ↑↓ siblings in a column, → in, ← out.
+      if (isMobileViewport()) {
+        if (key === 'ArrowLeft') {
+          goPrevSibling()
+          return
+        }
+        if (key === 'ArrowRight') {
+          goNextSibling()
+          return
+        }
+        if (key === 'ArrowUp') {
+          goShallower()
+          return
+        }
+        if (key === 'ArrowDown') {
+          goDeeper()
+        }
+        return
+      }
+
       if (key === 'ArrowLeft') {
         goShallower()
         return
@@ -184,8 +203,8 @@ export function Portfolio() {
         return
       }
 
-      // Swipe up = enter subdots, swipe down = leave
-      if (dy < 0) goDeeper()
+      // Swipe down = into subdots, swipe up = out
+      if (dy > 0) goDeeper()
       else goShallower()
     }
 
