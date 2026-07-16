@@ -180,6 +180,17 @@ Axes are separate — horizontal and vertical never share behavior:
 
 Typing targets (`input`, `textarea`, `select`, `contenteditable`) are ignored so forms are not hijacked.
 
+## Mobile swipe
+
+On viewports below `md` (767px):
+
+| Gesture | Behavior |
+|---------|----------|
+| Swipe left | Next dot at the current level |
+| Swipe right | Previous dot at the current level |
+| Swipe up | Enter subdots (section → entries → screenshots) |
+| Swipe down | Leave subdots (screenshots → entries → section) |
+
 ---
 
 ## Deploy (Cloudflare)
