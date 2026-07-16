@@ -170,11 +170,13 @@ No component changes are required for a normal content update.
 
 ## Keyboard navigation
 
+Axes are separate — horizontal and vertical never share behavior:
+
 | Key | Behavior |
 |-----|----------|
-| ↑ / ← | Previous sibling (child → entry → section) |
-| ↓ | Next sibling at the current depth |
-| → | Enter first entry/child, or advance when none |
+| ↑ / ↓ | Move within the current column (sections, entries, or screenshot children) |
+| → | Drill in: section → first entry, or entry → first child (if any) |
+| ← | Drill out: child → entry, or entry → section |
 
 Typing targets (`input`, `textarea`, `select`, `contenteditable`) are ignored so forms are not hijacked.
 

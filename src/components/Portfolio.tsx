@@ -69,46 +69,54 @@ export function Portfolio() {
       const inChildren = childIndex >= 0
       const inEntries = entryIndex >= 0
 
-      if (inChildren) {
-        if (key === 'ArrowUp' || key === 'ArrowLeft') {
-          setActiveChildId(childIndex <= 0 ? null : nested[childIndex - 1].id)
-          return
-        }
-        if (key === 'ArrowDown' || key === 'ArrowRight') {
-          if (childIndex < nested.length - 1) {
-            setActiveChildId(nested[childIndex + 1].id)
-          }
-          return
-        }
-      }
-
-      if (inEntries) {
-        if (key === 'ArrowUp' || key === 'ArrowLeft') {
-          setActiveEntryId(entryIndex <= 0 ? null : sectionEntries[entryIndex - 1].id)
+      // Horizontal: move between section ↔ entry ↔ child columns
+      if (key === 'ArrowLeft') {
+        if (inChildren) {
           setActiveChildId(null)
           return
         }
-        if (key === 'ArrowDown') {
-          if (entryIndex < sectionEntries.length - 1) {
-            setActiveEntryId(sectionEntries[entryIndex + 1].id)
-            setActiveChildId(null)
-          }
-          return
+        if (inEntries) {
+          setActiveEntryId(null)
+          setActiveChildId(null)
         }
-        if (key === 'ArrowRight') {
-          if (nested.length > 0) {
-            setActiveChildId(nested[0].id)
-            return
-          }
-          if (entryIndex < sectionEntries.length - 1) {
-            setActiveEntryId(sectionEntries[entryIndex + 1].id)
-            setActiveChildId(null)
-          }
-          return
-        }
+        return
       }
 
-      if (key === 'ArrowUp' || key === 'ArrowLeft') {
+      if (key === 'ArrowRight') {
+        if (inChildren) return
+        if (inEntries) {
+          if (nested.length > 0) setActiveChildId(nested[0].id)
+          return
+        }
+        if (sectionEntries.length > 0) {
+          setActiveEntryId(sectionEntries[0].id)
+          setActiveChildId(null)
+        }
+        return
+      }
+
+      // Vertical: move within the current column only
+      if (inChildren) {
+        if (key === 'ArrowUp' && childIndex > 0) {
+          setActiveChildId(nested[childIndex - 1].id)
+        } else if (key === 'ArrowDown' && childIndex < nested.length - 1) {
+          setActiveChildId(nested[childIndex + 1].id)
+        }
+        return
+      }
+
+      if (inEntries) {
+        if (key === 'ArrowUp' && entryIndex > 0) {
+          setActiveEntryId(sectionEntries[entryIndex - 1].id)
+          setActiveChildId(null)
+        } else if (key === 'ArrowDown' && entryIndex < sectionEntries.length - 1) {
+          setActiveEntryId(sectionEntries[entryIndex + 1].id)
+          setActiveChildId(null)
+        }
+        return
+      }
+
+      if (key === 'ArrowUp') {
         setActiveIndex((index) => Math.max(0, index - 1))
         setActiveEntryId(null)
         setActiveChildId(null)
@@ -116,18 +124,6 @@ export function Portfolio() {
       }
 
       if (key === 'ArrowDown') {
-        setActiveIndex((index) => Math.min(sections.length - 1, index + 1))
-        setActiveEntryId(null)
-        setActiveChildId(null)
-        return
-      }
-
-      if (key === 'ArrowRight') {
-        if (sectionEntries.length > 0) {
-          setActiveEntryId(sectionEntries[0].id)
-          setActiveChildId(null)
-          return
-        }
         setActiveIndex((index) => Math.min(sections.length - 1, index + 1))
         setActiveEntryId(null)
         setActiveChildId(null)
